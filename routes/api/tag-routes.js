@@ -8,6 +8,12 @@ router.get('/', (req, res) => {
   Tag.findAll({
     order: ['tag_name']
   })
+  .then((allTag) => {
+    res.json(allTag)
+  })
+  .catch((err) => {
+    res.json(err)
+  })
   //// be sure to include its associated Product data
 });
 
@@ -17,6 +23,12 @@ router.get('/:id', (req, res) => {
     where: {
       id: req.params.id
     }
+  })
+  .then((oneTag) => {
+    res.json(oneTag)
+  })
+  .catch((err) => {
+    res.json(err)
   })
   //// be sure to include its associated Product data
 });
